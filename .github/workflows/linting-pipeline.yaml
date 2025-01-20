@@ -24,4 +24,3 @@ jobs:
       run:  npx htmlhint "**/*.html"
     - name: checkcss
       run:  npx stylelint "**/*.css"
-      continue-on-error: true
