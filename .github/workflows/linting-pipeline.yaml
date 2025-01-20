@@ -1,0 +1,26 @@
+name: PR BUILD Check
+
+
+on:
+  pull_request:
+    branches:
+      - develop
+  push:
+    branches:
+      - develop
+jobs:
+  BUILD:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: install Node
+      uses: actions/setup-node@v4
+    - name: install htmlhint
+      run:  npm install --save-dev htmlhint
+    - name: install stylelint
+      run:  npm install --save-dev stylelint
+    - name: checkhtml
+      run:  npx htmlhint "**/*.html"
+    - name: checkcss
+      run:  npx stylelint "**/*.css"
